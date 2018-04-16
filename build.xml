@@ -3,6 +3,6 @@
     <property name="basedir" value="." />
     <target name="setup">
         <delete dir="${basedir}/logs" />
-        <mkdir dir="./aaaa" />
+        <mkdir dir="${basedir}/aaaa" />
     </target>
 </project>
