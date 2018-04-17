@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="phpmd.example" default="prepare" basedir=".">
-    <property name="phpunit" value="phpunit"/>
     <target name="prepare"
             unless="prepare.done"
             description="Prepare for build">
@@ -16,7 +15,7 @@
             unless="phpunit.done"
             depends="prepare"
             description="Run unit tests with PHPUnit">
-        <exec executable="${phpunit}" resultproperty="result.phpunit" taskname="phpunit">
+        <exec executable="/usr/local/bin/phpunit" resultproperty="result.phpunit" taskname="phpunit">
             <arg value="--configuration"/>
             <arg path="${basedir}/phpunit.xml"/>
             <arg value="--coverage-html"/>
