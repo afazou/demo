@@ -12,17 +12,17 @@
         <property name="prepare.done" value="true"/>
     </target>
 
-    <target name="phpunit"
+    <!--<target name="phpunit"
             unless="phpunit.done"
             depends="prepare"
             description="Run unit tests with PHPUnit">
         <exec executable="${phpunit}" resultproperty="result.phpunit" taskname="phpunit">
-            <arg value="--configuration"/>
+            <arg value="&#45;&#45;configuration"/>
             <arg path="${basedir}/phpunit.xml"/>
         </exec>
 
         <property name="phpunit.done" value="true"/>
-    </target>
+    </target>-->
 
 </project>
 
