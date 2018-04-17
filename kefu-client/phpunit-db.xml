@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--verbose:输出更详尽的信息-->
 <!--beStrictAboutOutputDuringTests:启用本项检查后，如果某个测试产生了输出，例如，在测试代码或被测代码中调用了 print，它将被标记为有风险。-->
-<phpunit verbose="true" colors="true" bootstrap="bootstrap.php" beStrictAboutOutputDuringTests="true">
+<phpunit verbose="true" colors="true" beStrictAboutOutputDuringTests="true">
     <php>
         <!--数据库连接相关配置Begin-->
         <!--<var name="DB_DSN" value="mysql:dbname=weikefu;host=127.0.0.1" />
