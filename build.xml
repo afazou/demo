@@ -4,7 +4,7 @@
 <taskdef name="phpmd" classname="org.phpmd.ant.PHPMDTask"/>
 
 <target name="example">
-    <phpmd rulesetfiles="unusedcode" failonerror="off">
+    <phpmd rulesetfiles="unusedcode">
         <formatter type="xml" toFile="${basedir}/pmd.xml" />
         <fileset dir="${basedir}/src">
             <include name="*.php" />
