@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--<phpunit colors="true" bootstrap="bootstrap.php">-->
+<phpunit colors="true">
+    <php>
+        <!--数据库连接相关配置Begin-->
+        <!--<var name="DB_DSN" value="mysql:dbname=weikefu;host=127.0.0.1" />
+        <var name="DB_USER" value="root" />
+        <var name="DB_PASSWD" value="111111" />
+        <var name="DB_DBNAME" value="weikefu" />-->
+        <!--数据库连接相关配置End-->
+    </php>
+    <!--测试套件Begin-->
+    <testsuites>
+        <testsuite name="my">
+            <file>./tests/WordWrapTest.php</file>
+        </testsuite>
+    </testsuites>
+    <!--测试套件End-->
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+        </whitelist>
+    </filter>
+
+    <!--储存代码覆盖率(code coverage)分析结果-->
+    <logging>
+        <log type="coverage-html" target="./coverage" charset="UTF-8"/>
+    </logging>
+
+</phpunit>

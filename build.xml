@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="phpmd.example" default="example">
+<project name="phpmd.example" default="prepare" basedir=".">
+    <property name="phpunit" value="phpunit"/>
+    <target name="prepare"
+            unless="prepare.done"
+            description="Prepare for build">
+        <mkdir dir="${basedir}/build/api"/>
+        <mkdir dir="${basedir}/build/coverage"/>
+        <mkdir dir="${basedir}/build/logs"/>
+        <mkdir dir="${basedir}/build/pdepend"/>
+        <mkdir dir="${basedir}/build/phpdox"/>
+        <property name="prepare.done" value="true"/>
+    </target>
 
-<taskdef name="phpmd" classname="org.phpmd.ant.PHPMDTask"/>
+    <target name="phpunit"
+            unless="phpunit.done"
+            depends="prepare"
+            description="Run unit tests with PHPUnit">
+        <exec executable="${phpunit}" resultproperty="result.phpunit" taskname="phpunit">
+            <arg value="--configuration"/>
+            <arg path="${basedir}/phpunit.xml"/>
+        </exec>
 
-<target name="example">
-    <phpmd rulesetfiles="codesize,unusedcode,naming">
-        <formatter type="xml" toFile="/opt/www/demo-b/pmd.xml" />
-        <fileset dir="/opt/www/demo-b/src">
-            <include name="Db.php" />
-        </fileset>
-    </phpmd>
-</target>
-
-</project>
-
+        <property name="phpunit.done" value="true"/>
+    </target>
 
