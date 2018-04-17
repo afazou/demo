@@ -7,10 +7,10 @@
         <mkdir dir="${basedir}/build/logs"/>
         <property name="prepare.done" value="true"/>
     </target>-->
-
+    <property name="phpunit" value="phpunit"/>
     <target name="prepare">
         <!--failonerror：当出现错误时自动停止-->
-        <exec dir="/usr/local/bin/" executable="phpunit" failonerror="true">
+        <exec executable="${phpunit}" failonerror="true">
             <arg value="--configuration"/>
             <arg path="/opt/www/demo-b/kefu-client/phpunit-db.xml"/>
         </exec>
