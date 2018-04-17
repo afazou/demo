@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="phpmd.example" default="example" basedir=".">
+<project name="phpmd.example" default="example">
 
 <taskdef name="phpmd" classname="org.phpmd.ant.PHPMDTask"/>
 
 <target name="example">
     <phpmd rulesetfiles="unusedcode">
-        <formatter type="xml" toFile="${basedir}/pmd.xml" />
-        <fileset dir="${basedir}/src">
-            <include name="*.php" />
+        <formatter type="xml" toFile="/opt/www/demo-b/pmd.xml" />
+        <fileset dir="/opt/www/demo-b/src">
+            <include name="Db.php" />
         </fileset>
     </phpmd>
 </target>
