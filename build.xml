@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="DEMOTest" default="phpmd" basedir=".">
-    <taskdef name="phpmd" classname="org.phpmd.ant.PHPMDTask"/>
-    <target name="phpmd">
-        <phpmd rulesetfiles="unusedcode" failonerror="off">
-            <formatter type="xml" toFile="${basedir}/pmd.xml" />
-            <fileset dir="${basedir}/src">
-                <include name="*.php" />
-            </fileset>
-        </phpmd>
-    </target>
+<project name="phpmd.example" default="example" basedir=".">
+
+<taskdef name="phpmd" classname="org.phpmd.ant.PHPMDTask"/>
+
+<target name="example">
+    <phpmd rulesetfiles="unusedcode" failonerror="off">
+        <formatter type="xml" toFile="${basedir}/pmd.xml" />
+        <fileset dir="${basedir}/src">
+            <include name="*.php" />
+        </fileset>
+    </phpmd>
+</target>
 
 </project>
+
+
