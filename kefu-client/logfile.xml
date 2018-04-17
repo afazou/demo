@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="db" tests="1" assertions="3" failures="0" errors="0" time="1.156500">
+    <testsuite name="LoginTest" file="E:\www\Gwap\weixin-kefu\kefu-client\tests\LoginTest5.php" tests="1" assertions="3" failures="0" errors="0" time="1.156500">
+      <testsuite name="LoginTest::testSignIn" tests="1" assertions="3" failures="0" errors="0" time="1.156500">
+        <testcase name="testSignIn with data set &quot;用户名与密码正确A&quot;" assertions="3" time="1.156500"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

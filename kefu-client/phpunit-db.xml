@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--verbose:输出更详尽的信息-->
+<!--beStrictAboutOutputDuringTests:启用本项检查后，如果某个测试产生了输出，例如，在测试代码或被测代码中调用了 print，它将被标记为有风险。-->
+<phpunit verbose="true" colors="true" bootstrap="bootstrap.php" beStrictAboutOutputDuringTests="true">
+    <php>
+        <!--数据库连接相关配置Begin-->
+        <var name="DB_DSN" value="mysql:dbname=weikefu;host=127.0.0.1" />
+        <var name="DB_USER" value="root" />
+        <var name="DB_PASSWD" value="111111" />
+        <var name="DB_DBNAME" value="weikefu" />
+        <!--数据库连接相关配置End-->
+    </php>
+    <!--测试套件Begin-->
+    <testsuites>
+        <testsuite name="db">
+            <!--<file>./tests/CheckModelTest.php</file>-->
+
+            <!--<file>./tests/LoginTest.php</file>-->
+            <!--<file>./tests/LoginTest2.php</file>-->
+            <!--<file>./tests/LoginTest3.php</file>-->
+            <!--<file>./tests/LoginTest4.php</file>-->
+            <file>./tests/LoginTest5.php</file>
+            <!--<file>./tests/WordWrapTest.php</file>-->
+        </testsuite>
+    </testsuites>
+    <!--测试套件End-->
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="false">
+            <directory suffix=".php">./src</directory>
+            <directory suffix=".php">./models</directory>
+            <directory suffix=".php">./vendor/catfan/medoo/src</directory>
+        </whitelist>
+    </filter>
+
+    <!--储存代码覆盖率(code coverage)分析结果-->
+    <logging>
+        <log type="coverage-html" target="./coverage" charset="UTF-8"/>
+        <log type="json" target="./logfile.json"/>
+        <log type="tap" target="./logfile.tap"/>
+        <log type="junit" target="./logfile.xml" logIncompleteSkipped="false"/>
+        <log type="testdox-text" target="./testdox.txt"/>
+    </logging>
+
+
+</phpunit>

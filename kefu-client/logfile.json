@@ -1,0 +1,26 @@
+{
+    "event": "suiteStart",
+    "suite": "db",
+    "tests": 1
+}{
+    "event": "suiteStart",
+    "suite": "LoginTest",
+    "tests": 1
+}{
+    "event": "suiteStart",
+    "suite": "LoginTest::testSignIn",
+    "tests": 1
+}{
+    "event": "testStart",
+    "suite": "LoginTest::testSignIn",
+    "test": "LoginTest::testSignIn with data set \"\u7528\u6237\u540d\u4e0e\u5bc6\u7801\u6b63\u786eA\" ('1607', '123456', 3)"
+}{
+    "event": "test",
+    "suite": "LoginTest::testSignIn",
+    "test": "LoginTest::testSignIn with data set \"\u7528\u6237\u540d\u4e0e\u5bc6\u7801\u6b63\u786eA\" ('1607', '123456', 3)",
+    "status": "pass",
+    "time": 1.1564998626709,
+    "trace": [],
+    "message": "",
+    "output": ""
+}

@@ -1,0 +1,10 @@
+{
+    "require": {
+        "phpunit/phpunit": "5.2.7",
+        "phpunit/dbunit": "2.0.3",
+        "catfan/medoo": "v1.5.6"
+    },
+    "autoload": {
+        "psr-4": {"Kefu\\Lib\\": "src/", "Kefu\\Model\\": "models/", "Kefu\\Test\\": "tests/"}
+    }
+}
