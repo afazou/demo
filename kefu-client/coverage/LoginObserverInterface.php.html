@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Code Coverage for E:\www\demo\demo\kefu-client\src/Exception.php</title>
+  <title>Code Coverage for E:\www\demo\demo\kefu-client\src/LoginObserverInterface.php</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
@@ -18,7 +18,7 @@
      <div class="col-md-12">
       <ol class="breadcrumb">
         <li><a href="index.html">E:\www\demo\demo\kefu-client\src</a></li>
-        <li class="active">Exception.php</li>
+        <li class="active">LoginObserverInterface.php</li>
 
       </ol>
      </div>
@@ -48,8 +48,8 @@
          </div>
        </div>
 </td>
-      <td class="success small"><div align="right">100.00%</div></td>
-      <td class="success small"><div align="right">1&nbsp;/&nbsp;1</div></td>
+      <td class="success small"><div align="right"></div></td>
+      <td class="success small"><div align="right">0&nbsp;/&nbsp;0</div></td>
       <td class="success big">       <div class="progress">
          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100.00" aria-valuemin="0" aria-valuemax="100" style="width: 100.00%">
            <span class="sr-only">100.00% covered (success)</span>
@@ -69,35 +69,6 @@
       <td class="success small"><div align="right">0&nbsp;/&nbsp;0</div></td>
      </tr>
 
-     <tr>
-      <td class="success">Exception</td>
-      <td class="success big">       <div class="progress">
-         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100.00" aria-valuemin="0" aria-valuemax="100" style="width: 100.00%">
-           <span class="sr-only">100.00% covered (success)</span>
-         </div>
-       </div>
-</td>
-      <td class="success small"><div align="right">100.00%</div></td>
-      <td class="success small"><div align="right">1&nbsp;/&nbsp;1</div></td>
-      <td class="success big">       <div class="progress">
-         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100.00" aria-valuemin="0" aria-valuemax="100" style="width: 100.00%">
-           <span class="sr-only">100.00% covered (success)</span>
-         </div>
-       </div>
-</td>
-      <td class="success small"><div align="right">100.00%</div></td>
-      <td class="success small"><div align="right">0&nbsp;/&nbsp;0</div></td>
-      <td class="success small">0</td>
-      <td class="success big">       <div class="progress">
-         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100.00" aria-valuemin="0" aria-valuemax="100" style="width: 100.00%">
-           <span class="sr-only">100.00% covered (success)</span>
-         </div>
-       </div>
-</td>
-      <td class="success small"><div align="right">100.00%</div></td>
-      <td class="success small"><div align="right">0&nbsp;/&nbsp;0</div></td>
-     </tr>
-
 
     </tbody>
    </table>
@@ -105,11 +76,12 @@
     <tbody>
      <tr><td><div align="right"><a name="1"></a><a href="#1">1</a></div></td><td class="codeLine"><span class="default">&lt;?php</span></td></tr>
      <tr><td><div align="right"><a name="2"></a><a href="#2">2</a></div></td><td class="codeLine"><span class="keyword">namespace</span><span class="default">&nbsp;</span><span class="default">Kefu</span><span class="default">\</span><span class="default">Lib</span><span class="keyword">;</span></td></tr>
-     <tr><td><div align="right"><a name="3"></a><a href="#3">3</a></div></td><td class="codeLine"><span class="keyword">class</span><span class="default">&nbsp;</span><span class="default">Exception</span><span class="default">&nbsp;</span><span class="keyword">extends</span><span class="default">&nbsp;</span><span class="default">\</span><span class="default">Exception</span></td></tr>
-     <tr><td><div align="right"><a name="4"></a><a href="#4">4</a></div></td><td class="codeLine"><span class="keyword">{</span></td></tr>
-     <tr><td><div align="right"><a name="5"></a><a href="#5">5</a></div></td><td class="codeLine"></td></tr>
-     <tr><td><div align="right"><a name="6"></a><a href="#6">6</a></div></td><td class="codeLine"><span class="keyword">}</span></td></tr>
-     <tr><td><div align="right"><a name="7"></a><a href="#7">7</a></div></td><td class="codeLine"></td></tr>
+     <tr><td><div align="right"><a name="3"></a><a href="#3">3</a></div></td><td class="codeLine"><span class="keyword">use</span><span class="default">&nbsp;</span><span class="default">\</span><span class="default">Kefu</span><span class="default">\</span><span class="default">Lib</span><span class="default">\</span><span class="default">LoginObserved</span><span class="keyword">;</span></td></tr>
+     <tr><td><div align="right"><a name="4"></a><a href="#4">4</a></div></td><td class="codeLine"><span class="keyword">interface</span><span class="default">&nbsp;</span><span class="default">LoginObserverInterface</span></td></tr>
+     <tr><td><div align="right"><a name="5"></a><a href="#5">5</a></div></td><td class="codeLine"><span class="keyword">{</span></td></tr>
+     <tr><td><div align="right"><a name="6"></a><a href="#6">6</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">update</span><span class="keyword">(</span><span class="default">LoginObserved</span><span class="default">&nbsp;</span><span class="default">$Observed</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+     <tr><td><div align="right"><a name="7"></a><a href="#7">7</a></div></td><td class="codeLine"><span class="keyword">}</span></td></tr>
+     <tr><td><div align="right"><a name="8"></a><a href="#8">8</a></div></td><td class="codeLine"></td></tr>
 
     </tbody>
    </table>

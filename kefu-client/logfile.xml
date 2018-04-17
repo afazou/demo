@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="db" tests="1" assertions="3" failures="0" errors="0" time="1.156500">
-    <testsuite name="LoginTest" file="E:\www\Gwap\weixin-kefu\kefu-client\tests\LoginTest5.php" tests="1" assertions="3" failures="0" errors="0" time="1.156500">
-      <testsuite name="LoginTest::testSignIn" tests="1" assertions="3" failures="0" errors="0" time="1.156500">
-        <testcase name="testSignIn with data set &quot;用户名与密码正确A&quot;" assertions="3" time="1.156500"/>
-      </testsuite>
+  <testsuite name="db" tests="1" assertions="3" failures="0" errors="0" time="0.016000">
+    <testsuite name="WordWrapTest" file="E:\www\demo\demo\kefu-client\tests\WordWrapTest.php" tests="1" assertions="3" failures="0" errors="0" time="0.016000">
+      <testcase name="testItCanWrap" class="WordWrapTest" file="E:\www\demo\demo\kefu-client\tests\WordWrapTest.php" line="4" assertions="3" time="0.016000"/>
     </testsuite>
   </testsuite>
 </testsuites>

@@ -12,14 +12,6 @@ class WordWrapTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("anbcnd", $w->wrap('a bc d', 3));
     }
 
-    /**
-     *
-     * @test
-     */
-    public function session()
-    {
-        print_r($_SESSION);
-    }
 
 }
 
