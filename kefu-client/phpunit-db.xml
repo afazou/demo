@@ -34,12 +34,19 @@
     </filter>
 
     <!--储存代码覆盖率(code coverage)分析结果-->
-    <logging>
+    <!--<logging>
         <log type="coverage-html" target="./coverage" charset="UTF-8"/>
         <log type="json" target="./logfile.json"/>
         <log type="tap" target="./logfile.tap"/>
         <log type="junit" target="./logfile.xml" logIncompleteSkipped="false"/>
         <log type="testdox-text" target="./testdox.txt"/>
+    </logging>-->
+
+    <logging>
+        <log type="coverage-html" target="../build/coverage"/>
+        <log type="coverage-clover" target="../build/logs/clover.xml"/>
+        <log type="coverage-crap4j" target="../build/logs/crap4j.xml"/>
+        <log type="junit" target="../build/logs/junit.xml" logIncompleteSkipped="false"/>
     </logging>
 
 

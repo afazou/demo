@@ -3,11 +3,8 @@
     <target name="prepare"
             unless="prepare.done"
             description="Prepare for build">
-        <mkdir dir="${basedir}/build/api"/>
         <mkdir dir="${basedir}/build/coverage"/>
         <mkdir dir="${basedir}/build/logs"/>
-        <mkdir dir="${basedir}/build/pdepend"/>
-        <mkdir dir="${basedir}/build/phpdox"/>
         <property name="prepare.done" value="true"/>
     </target>
 
@@ -15,7 +12,7 @@
         <!--failonerror：当出现错误时自动停止-->
         <exec executable="/usr/local/bin/phpunit" failonerror="true">
             <arg value="--configuration"/>
-            <arg value="${basedir}/kefu-client/phpunit-db.xml"/>
+            <arg path="${basedir}/kefu-client/phpunit-db.xml"/>
         </exec>
     </target>
 </project>
