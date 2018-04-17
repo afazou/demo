@@ -43,10 +43,10 @@
     </logging>-->
 
     <logging>
-        <log type="coverage-html" target="../build/coverage"/>
-        <log type="coverage-clover" target="../build/logs/clover.xml"/>
-        <log type="coverage-crap4j" target="../build/logs/crap4j.xml"/>
-        <log type="junit" target="../build/logs/junit.xml" logIncompleteSkipped="false"/>
+        <log type="coverage-html" target="/opt/www/demo-b/build/coverage"/>
+        <log type="coverage-clover" target="/opt/www/demo-b/build/logs/clover.xml"/>
+        <log type="coverage-crap4j" target="/opt/www/demo-b/build/logs/crap4j.xml"/>
+        <log type="junit" target="/opt/www/demo-b/build/logs/junit.xml" logIncompleteSkipped="false"/>
     </logging>
 
 
