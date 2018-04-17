@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="phpmd.example" default="prepare" basedir=".">
-    <target name="prepare"
+<project name="phpmd.example" default="prepare">
+    <!--<target name="prepare"
             unless="prepare.done"
             description="Prepare for build">
         <mkdir dir="${basedir}/build/coverage"/>
         <mkdir dir="${basedir}/build/logs"/>
         <property name="prepare.done" value="true"/>
-    </target>
+    </target>-->
 
-    <target name="phpunit" depends="prepare">
+    <target name="prepare">
         <!--failonerror：当出现错误时自动停止-->
         <exec executable="/usr/local/bin/phpunit" failonerror="true">
             <arg value="--configuration"/>
-            <arg path="${basedir}/kefu-client/phpunit-db.xml"/>
+            <arg path="/opt/www/demo-b/kefu-client/phpunit-db.xml"/>
         </exec>
     </target>
 </project>
