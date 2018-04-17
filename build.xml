@@ -19,6 +19,10 @@
         <exec executable="${phpunit}" resultproperty="result.phpunit" taskname="phpunit">
             <arg value="--configuration"/>
             <arg path="${basedir}/phpunit.xml"/>
+            <arg value="--coverage-html"/>
+            <arg path="${basedir}/build/coverage"/>
+            <arg value="--coverage-clover"/>
+            <arg path="${basedir}/build/coverage/coverage.xml"/>
         </exec>
 
         <property name="phpunit.done" value="true"/>
