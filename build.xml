@@ -7,7 +7,6 @@
         <mkdir dir="${basedir}/build/logs"/>
         <property name="prepare.done" value="true"/>
     </target>-->
-    <property name="phpunit" value="/usr/local/bin/phpunit"/>
     <target name="prepare">
         <!--failonerror：当出现错误时自动停止-->
         <exec executable="/bin/sh" failonerror="true">
