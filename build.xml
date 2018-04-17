@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="APITest" default="setup">
-    <property name="basedir" value="." />
-    <target name="setup">
-        <delete dir="${basedir}/logs" />
-        <mkdir dir="${basedir}/aaaa" />
+<project name="DEMOTest" default="phpmd">
+    <!--php代码静态检查工具配置-->
+    <target name="phpmd" description="Perform project mess detection using PHPMD">
+        <phpmd>
+            <fileset dir="${project.basedir}">  <!--project.basedir Ant内置属性，代表当前项目的根路径-->
+                <include name="src/.php" />
+            </fileset>
+        </phpmd>
     </target>
 </project>
