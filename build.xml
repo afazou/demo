@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="pexample" default="prepare">
-    <!--<target name="prepare"
-            unless="prepare.done"
-            description="Prepare for build">
-        <mkdir dir="${basedir}/build/coverage"/>
-        <mkdir dir="${basedir}/build/logs"/>
-        <property name="prepare.done" value="true"/>
-    </target>-->
     <target name="prepare">
+        <mkdir dir="${project.basedir}/build/coverage"/>
+        <mkdir dir="${project.basedir}/build/logs"/>
         <!--failonerror：当出现错误时自动停止-->
-        <exec failonerror="true" dir="." command="/usr/local/bin/phpunit --configuration '/opt/www/demo-b/kefu-client/phpunit-db.xml'"/>
+        <exec failonerror="true" command="phpunit --configuration ${project.basedir}'/kefu-client/phpunit-db.xml'"/>
     </target>
 </project>
 

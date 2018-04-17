@@ -34,14 +34,6 @@
     </filter>
 
     <!--储存代码覆盖率(code coverage)分析结果-->
-    <!--<logging>
-        <log type="coverage-html" target="./coverage" charset="UTF-8"/>
-        <log type="json" target="./logfile.json"/>
-        <log type="tap" target="./logfile.tap"/>
-        <log type="junit" target="./logfile.xml" logIncompleteSkipped="false"/>
-        <log type="testdox-text" target="./testdox.txt"/>
-    </logging>-->
-
     <logging>
         <log type="coverage-html" target="/opt/www/demo-b/build/coverage"/>
         <log type="coverage-clover" target="/opt/www/demo-b/build/logs/clover.xml"/>
