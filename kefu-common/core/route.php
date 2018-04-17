@@ -24,7 +24,7 @@ require INCLUDE_PATH . '/../controller/ctl.base.php';
 require ROOT_PATH . '/config/config.php';
 require INCLUDE_PATH . '/../lib/redis.class.php';
 require INCLUDE_PATH . '/../lib/wechat.class.php';
-require INCLUDE_PATH . '/../lib/Weixinchat.class.php';
+//require INCLUDE_PATH . '/../lib/Weixinchat.class.php';
 require INCLUDE_PATH . '/../lib/Http.class.php';
 require INCLUDE_PATH . '/weixin.php';
 
