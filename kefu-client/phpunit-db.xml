@@ -20,7 +20,7 @@
             <!--<file>./tests/LoginTest3.php</file>-->
             <!--<file>./tests/LoginTest4.php</file>-->
             <!--<file>./tests/LoginTest5.php</file>-->
-            <file>./tests/WordWrapTest.php</file>
+            <file>/opt/www/demo-b/kefu-client/tests/WordWrapTest.php</file>
         </testsuite>
     </testsuites>
     <!--测试套件End-->
