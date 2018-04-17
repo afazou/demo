@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="DEMOTest" default="phpmd">
-    <!--php代码静态检查工具配置-->
-    <target name="phpmd" description="Perform project mess detection using PHPMD">
-        <phpmd>
-            <fileset dir="${project.basedir}">  <!--project.basedir Ant内置属性，代表当前项目的根路径-->
-                <include name="src/.php" />
+<project name="DEMOTest" default="phpmd-example">
+
+    <taskdef name="phpmd" classname="org.phpmd.ant.PHPMDTask"/>
+    <target name="phpmd-example">
+        <phpmd rulesetfiles="unusedcode" failonerror="off">
+            <formatter type="xml" toFile="${project.basedir}/pmd.xml" />
+            <fileset dir="${project.basedir}/src">
+                <include name="*.php" />
             </fileset>
         </phpmd>
     </target>
+
 </project>
