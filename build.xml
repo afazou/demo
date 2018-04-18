@@ -6,8 +6,8 @@
 
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
-        <delete dir="${project.basedir}/build/coverage"/>
-        <delete dir="${project.basedir}/build/logs"/>
+        <delete dir="/opt/www/demo-b/build/coverage"/>
+        <delete dir="/opt/www/demo-b/build/logs"/>
         <delete dir="/var/lib/jenkins/workspace/Demo-b/pmd.xml"/>
         <delete dir="/var/lib/jenkins/workspace/Demo-b/cpd.xml"/>
         <delete dir="/var/lib/jenkins/workspace/Demo-b/checkstyle-result.xml"/>
@@ -17,14 +17,14 @@
 
 
     <target name="prepare" unless="prepare.done" depends="clean" description="Prepare for build">
-        <mkdir dir="${project.basedir}/build/coverage"/>
-        <mkdir dir="${project.basedir}/build/logs"/>
+        <mkdir dir="/opt/www/demo-b/build/coverage"/>
+        <mkdir dir="/opt/www/demo-b/build/logs"/>
         <property name="prepare.done" value="true"/>
     </target>
 
 
     <target name="phpmd">
-        <exec dir="${project.basedir}" executable="/usr/local/bin/phpmd">
+        <exec dir="/opt/www/demo-b" executable="/usr/local/bin/phpmd">
             <arg path="kefu-client/src" />
             <arg value="xml" />
             <arg path="phpmd.xml" />
@@ -36,7 +36,7 @@
 
     <!--failonerror：当出现错误时自动停止-->
     <target name="phpunit" description="Run unit tests with PHPUnit">
-        <exec dir="${project.basedir}" executable="/usr/local/bin/phpunit" resultproperty="result.phpunit" failonerror="true">
+        <exec dir="/opt/www/demo-b" executable="/usr/local/bin/phpunit" resultproperty="result.phpunit" failonerror="true">
             <arg value="--configuration"/>
             <arg path="kefu-client/phpunit-db.xml"/>
         </exec>
@@ -44,7 +44,7 @@
 
 
     <target name="phpcpd">
-        <exec dir="${project.basedir}" executable="/usr/local/bin/phpcpd">
+        <exec dir="/opt/www/demo-b" executable="/usr/local/bin/phpcpd">
             <arg value="--log-pmd" />
             <arg path="/var/lib/jenkins/workspace/Demo-b/cpd.xml" />
             <arg path="kefu-client/src" />
@@ -53,7 +53,7 @@
 
 
     <target name="phpcs">
-        <exec dir="${project.basedir}" executable="/usr/local/bin/phpcs">
+        <exec dir="/opt/www/demo-b" executable="/usr/local/bin/phpcs">
             <arg value="--report=checkstyle" />
             <arg value="--report-file=/var/lib/jenkins/workspace/Demo-b/checkstyle-result.xml" />
             <arg value="--standard=PSR2" />
