@@ -8,14 +8,22 @@
     <property name="workspacedir" value="${env.WORKSPACE}"/>
 
 
+    <!--输出信息-->
+    <echo message="WORKSPACE:${workspacedir}" file="/tmp/messge.log" append="true"/>
+    <echo message="JOB_NAME:${env.JOB_NAME}" file="/tmp/messge.log" append="true"/>
+    <echo message="JOB_BASE_NAME:${env.JOB_BASE_NAME}" file="/tmp/messge.log" append="true"/>
+    <!--输出到控制台-->
+    <echo>Main Target init...</echo>
+
+
     <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure"/>
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/coverage"/>
         <delete dir="${basedir}/build/logs"/>
-        <delete dir="/var/lib/jenkins/workspace/Demo-b/pmd.xml"/>
-        <delete dir="/var/lib/jenkins/workspace/Demo-b/cpd.xml"/>
-        <delete dir="/var/lib/jenkins/workspace/Demo-b/checkstyle-result.xml"/>
+        <delete file="${workspacedir}/pmd.xml"/>
+        <delete file="${workspacedir}/cpd.xml"/>
+        <delete file="${workspacedir}/checkstyle-result.xml"/>
         <property name="clean.done" value="true"/>
     </target>
 
