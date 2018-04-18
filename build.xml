@@ -34,7 +34,7 @@
             <arg value="xml" />
             <arg path="phpmd.xml" />
             <arg value="--reportfile" />
-            <arg path="${workspacedir}/${env.JOB_NAME}/pmd.xml" />
+            <arg path="${workspacedir}/pmd.xml" />
         </exec>
     </target>
 
