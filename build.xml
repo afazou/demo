@@ -2,7 +2,7 @@
 <project name="pexample" default="full-build">
 
 
-    <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit"/>
+    <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure"/>
 
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
@@ -36,7 +36,7 @@
 
     <!--failonerror：当出现错误时自动停止-->
     <target name="phpunit" description="Run unit tests with PHPUnit">
-        <exec dir="${project.basedir}" executable="/usr/local/bin/phpunit" failonerror="true">
+        <exec dir="${project.basedir}" executable="/usr/local/bin/phpunit" resultproperty="result.phpunit" failonerror="true">
             <arg value="--configuration"/>
             <arg path="kefu-client/phpunit-db.xml"/>
         </exec>
@@ -62,6 +62,17 @@
             <arg path="kefu-client/src" />
             <arg path="kefu-client/tests" />
         </exec>
+    </target>
+
+
+    <target name="-check-failure">
+        <fail message="PHPUnit did not finish successfully">
+            <condition>
+                <not>
+                    <equals arg1="${result.phpunit}" arg2="0"/>
+                </not>
+            </condition>
+        </fail>
     </target>
 
 </project>
