@@ -2,15 +2,18 @@
 <project name="pexample" default="full-build">
 
 
+    <!--自定义属性-->
+    <property name="workspacedir" value="/var/lib/jenkins/workspace"/>
+
     <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure"/>
 
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/coverage"/>
         <delete dir="${basedir}/build/logs"/>
-        <delete dir="/var/lib/jenkins/workspace/Demo-b/pmd.xml"/>
-        <delete dir="/var/lib/jenkins/workspace/Demo-b/cpd.xml"/>
-        <delete dir="/var/lib/jenkins/workspace/Demo-b/checkstyle-result.xml"/>
+        <delete dir="${workspacedir}/Demo-b/pmd.xml"/>
+        <delete dir="${workspacedir}/Demo-b/cpd.xml"/>
+        <delete dir="${workspacedir}/Demo-b/checkstyle-result.xml"/>
         <property name="clean.done" value="true"/>
     </target>
 
@@ -29,7 +32,7 @@
             <arg value="xml" />
             <arg path="phpmd.xml" />
             <arg value="--reportfile" />
-            <arg path="/var/lib/jenkins/workspace/Demo-b/pmd.xml" />
+            <arg path="${workspacedir}/Demo-b/pmd.xml" />
         </exec>
     </target>
 
@@ -46,7 +49,7 @@
     <target name="phpcpd">
         <exec dir="${basedir}" executable="/usr/local/bin/phpcpd">
             <arg value="--log-pmd" />
-            <arg path="/var/lib/jenkins/workspace/Demo-b/cpd.xml" />
+            <arg path="${workspacedir}/Demo-b/cpd.xml" />
             <arg path="kefu-client/src" />
         </exec>
     </target>
@@ -55,7 +58,7 @@
     <target name="phpcs">
         <exec dir="${basedir}" executable="/usr/local/bin/phpcs">
             <arg value="--report=checkstyle" />
-            <arg value="--report-file=/var/lib/jenkins/workspace/Demo-b/checkstyle-result.xml" />
+            <arg value="--report-file=${workspacedir}/Demo-b/checkstyle-result.xml" />
             <arg value="--standard=PSR2" />
             <arg value="--extensions=php" />
             <arg value="--ignore=autoload.php" />
