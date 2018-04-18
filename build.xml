@@ -13,9 +13,9 @@
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/coverage"/>
         <delete dir="${basedir}/build/logs"/>
-        <delete dir="${workspacedir}/${JOB_NAME}/pmd.xml"/>
-        <delete dir="${workspacedir}/${JOB_NAME}/cpd.xml"/>
-        <delete dir="${workspacedir}/${JOB_NAME}/checkstyle-result.xml"/>
+        <delete dir="${workspacedir}/${env.JOB_NAME}/pmd.xml"/>
+        <delete dir="${workspacedir}/${env.JOB_NAME}/cpd.xml"/>
+        <delete dir="${workspacedir}/${env.JOB_NAME}/checkstyle-result.xml"/>
         <property name="clean.done" value="true"/>
     </target>
 
@@ -34,7 +34,7 @@
             <arg value="xml" />
             <arg path="phpmd.xml" />
             <arg value="--reportfile" />
-            <arg path="${workspacedir}/${JOB_NAME}/pmd.xml" />
+            <arg path="${workspacedir}/${env.JOB_NAME}/pmd.xml" />
         </exec>
     </target>
 
@@ -51,7 +51,7 @@
     <target name="phpcpd">
         <exec dir="${basedir}" executable="/usr/local/bin/phpcpd">
             <arg value="--log-pmd" />
-            <arg path="${workspacedir}/${JOB_NAME}/cpd.xml" />
+            <arg path="${workspacedir}/${env.JOB_NAME}/cpd.xml" />
             <arg path="kefu-client/src" />
         </exec>
     </target>
@@ -60,7 +60,7 @@
     <target name="phpcs">
         <exec dir="${basedir}" executable="/usr/local/bin/phpcs">
             <arg value="--report=checkstyle" />
-            <arg value="--report-file=${workspacedir}/${JOB_NAME}/checkstyle-result.xml" />
+            <arg value="--report-file=${workspacedir}/${env.JOB_NAME}/checkstyle-result.xml" />
             <arg value="--standard=PSR2" />
             <arg value="--extensions=php" />
             <arg value="--ignore=autoload.php" />
