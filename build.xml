@@ -68,7 +68,7 @@
 
 
     <target name="phpdox">
-        <mkdir dir="${project.basedir}/build/phpdox"/>
+        <mkdir dir="/opt/www/demo-b/build/phpdox"/>
         <exec executable="/usr/local/bin/phpdox" dir="${project.basedir}/build"/>
     </target>
 
