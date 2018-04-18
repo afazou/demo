@@ -6,15 +6,15 @@
 
 
 
-    <!--<target name="phpmd">
+    <target name="phpmd">
         <exec executable="/usr/local/bin/phpmd">
             <arg path="/opt/www/demo-b/kefu-client/src" />
             <arg value="text" />
-            <arg path="${basedir}/phpmd.xml" />
+            <arg path="/opt/www/demo-b/phpmd.xml" />
         </exec>
-    </target>-->
+    </target>
 
-    <target name="phpmd-ci">
+    <target name="phpmd-ci" depends="phpmd">
         <mkdir dir="${project.basedir}/build/coverage"/>
         <mkdir dir="${project.basedir}/build/logs"/>
         <exec executable="/usr/local/bin/phpmd">
