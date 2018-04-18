@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="pexample" default="phpmd-ci">
-
-
-
-
-
-
-    <target name="phpmd">
-        <exec executable="/usr/local/bin/phpmd">
-            <arg path="/opt/www/demo-b/kefu-client/src" />
-            <arg value="text" />
-            <arg path="/opt/www/demo-b/phpmd.xml" />
-        </exec>
-    </target>
-
-    <target name="phpmd-ci" depends="phpmd">
+    <target name="phpmd-ci">
         <mkdir dir="${project.basedir}/build/coverage"/>
         <mkdir dir="${project.basedir}/build/logs"/>
         <exec executable="/usr/local/bin/phpmd">
@@ -22,13 +8,9 @@
             <arg value="xml" />
             <arg path="/opt/www/demo-b/phpmd.xml" />
             <arg value="--reportfile" />
-            <arg path="/opt/www/demo-b/build/logs/pmd.xml" />
+            <arg path="/var/lib/jenkins/workspace/Demo-b/pmd.xml" />
         </exec>
     </target>
-
-
-
-
 
 </project>
 
