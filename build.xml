@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="pexample" default="full-build">
 
-    <target name="full-build" depends="prepare,phpmd,phpunit"/>
+
+    <target name="full-build" depends="prepare,phpmd,phpcpd,phpunit"/>
+
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
         <delete dir="${project.basedir}/build/coverage"/>
@@ -9,6 +11,8 @@
         <delete dir="/var/lib/jenkins/workspace/Demo-b/pmd.xml"/>
         <property name="clean.done" value="true"/>
     </target>
+
+
 
     <target name="prepare" unless="prepare.done" depends="clean" description="Prepare for build">
         <mkdir dir="${project.basedir}/build/coverage"/>
@@ -27,6 +31,7 @@
         </exec>
     </target>
 
+
     <!--failonerror：当出现错误时自动停止-->
     <target name="phpunit" description="Run unit tests with PHPUnit">
         <exec dir="${project.basedir}" executable="/usr/local/bin/phpunit" failonerror="true">
@@ -34,6 +39,18 @@
             <arg path="kefu-client/phpunit-db.xml"/>
         </exec>
     </target>
+
+
+    <target name="phpcpd">
+        <exec dir="${project.basedir}" executable="/usr/local/bin/phpcpd">
+            <arg value="--log-pmd" />
+            <arg path="/var/lib/jenkins/workspace/Demo-b/cpd.xml" />
+            <arg path="kefu-client/src" />
+        </exec>
+    </target>
+
+
+
 
 </project>
 
