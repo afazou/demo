@@ -29,11 +29,9 @@
 
     <!--failonerror：当出现错误时自动停止-->
     <target name="phpunit" description="Run unit tests with PHPUnit">
-        <mkdir dir="${project.basedir}/build/coverage"/>
-        <mkdir dir="${project.basedir}/build/logs"/>
         <exec dir="${project.basedir}" executable="/usr/local/bin/phpunit" failonerror="true">
             <arg value="--configuration"/>
-            <arg value="kefu-client/phpunit-db.xml"/>
+            <arg path="kefu-client/phpunit-db.xml"/>
         </exec>
     </target>
 
