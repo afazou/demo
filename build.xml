@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="pexample" default="phpmd-ci">
-    <target name="phpmd-ci">
+<project name="pexample" default="full-build">
+
+    <target name="full-build" depends="prepare,phpmd,phpunit"/>
+
+    <target name="clean" unless="clean.done" description="Cleanup build artifacts">
+        <delete dir="${project.basedir}/build/coverage"/>
+        <delete dir="${project.basedir}/build/logs"/>
+        <delete dir="/var/lib/jenkins/workspace/Demo-b/pmd.xml"/>
+        <property name="clean.done" value="true"/>
+    </target>
+
+    <target name="prepare" unless="prepare.done" depends="clean" description="Prepare for build">
         <mkdir dir="${project.basedir}/build/coverage"/>
         <mkdir dir="${project.basedir}/build/logs"/>
-        <exec executable="/usr/local/bin/phpmd">
-            <arg path="/opt/www/demo-b/kefu-client/src" />
+        <property name="prepare.done" value="true"/>
+    </target>
+
+
+    <target name="phpmd">
+        <exec dir="${project.basedir}" executable="/usr/local/bin/phpmd">
+            <arg path="kefu-client/src" />
             <arg value="xml" />
-            <arg path="/opt/www/demo-b/phpmd.xml" />
+            <arg path="phpmd.xml" />
             <arg value="--reportfile" />
             <arg path="/var/lib/jenkins/workspace/Demo-b/pmd.xml" />
+        </exec>
+    </target>
+
+    <!--failonerror：当出现错误时自动停止-->
+    <target name="phpunit" description="Run unit tests with PHPUnit">
+        <mkdir dir="${project.basedir}/build/coverage"/>
+        <mkdir dir="${project.basedir}/build/logs"/>
+        <exec dir="${project.basedir}" executable="/usr/local/bin/phpunit" failonerror="true">
+            <arg value="--configuration"/>
+            <arg value="kefu-client/phpunit-db.xml"/>
         </exec>
     </target>
 
