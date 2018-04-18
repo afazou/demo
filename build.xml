@@ -2,13 +2,14 @@
 <project name="pexample" default="full-build">
 
 
-    <target name="full-build" depends="prepare,phpmd,phpcpd,phpunit"/>
+    <target name="full-build" depends="prepare,phpmd,phpcpd,phpunit,phpcs"/>
 
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
         <delete dir="${project.basedir}/build/coverage"/>
         <delete dir="${project.basedir}/build/logs"/>
         <delete dir="/var/lib/jenkins/workspace/Demo-b/pmd.xml"/>
+        <delete dir="/var/lib/jenkins/workspace/Demo-b/cpd.xml"/>
         <property name="clean.done" value="true"/>
     </target>
 
@@ -48,6 +49,52 @@
             <arg path="kefu-client/src" />
         </exec>
     </target>
+
+
+    <target name="phpcs">
+        <exec dir="${project.basedir}" executable="/usr/local/bin/phpcs">
+            <arg value="--report=checkstyle" />
+            <arg value="--report-file=/var/lib/jenkins/workspace/Demo-b/checkstyle-result.xml" />
+            <arg value="--standard=PSR2" />
+            <arg value="--extensions=php" />
+            <arg value="--ignore=autoload.php" />
+            <arg path="kefu-client/src" />
+            <arg path="kefu-client/tests" />
+        </exec>
+    </target>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
