@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="pexample" default="full-build">
 
+    <!--使用Jenkins的内置变量-->
+    <property environment="env"/>
 
     <!--自定义属性-->
-    <property name="workspacedir" value="/var/lib/jenkins/workspace"/>
+    <property name="workspacedir" value="${env.WORKSPACE}"/>
 
     <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure"/>
 
