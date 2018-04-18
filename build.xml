@@ -9,9 +9,9 @@
 
 
     <!--输出信息-->
-    <echo message="WORKSPACE:${workspacedir}" file="/tmp/messge.log" append="true"/>
-    <echo message="JOB_NAME:${env.JOB_NAME}" file="/tmp/messge.log" append="true"/>
-    <echo message="JOB_BASE_NAME:${env.JOB_BASE_NAME}" file="/tmp/messge.log" append="true"/>
+    <echo message="WORKSPACE:${workspacedir}\n" file="/tmp/messge.log" append="true"/>
+    <echo message="JOB_NAME:${env.JOB_NAME}\n" file="/tmp/messge.log" append="true"/>
+    <echo message="JOB_BASE_NAME:${env.JOB_BASE_NAME}\n" file="/tmp/messge.log" append="true"/>
     <!--输出到控制台-->
     <echo>Main Target init...</echo>
 
