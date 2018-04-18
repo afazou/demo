@@ -12,7 +12,7 @@
         <mkdir dir="${project.basedir}/build/logs"/>
         <exec executable="/usr/local/bin/phpunit" failonerror="true">
             <arg value="--configuration"/>
-            <arg path="/opt/www/demo-b/kefu-client/phpunit-db.xml"/>
+            <arg value="/opt/www/demo-b/kefu-client/phpunit-db.xml"/>
         </exec>
     </target>
 
