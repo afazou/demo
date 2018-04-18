@@ -4,8 +4,11 @@
     <!--使用Jenkins的内置变量-->
     <property environment="env"/>
 
-    <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure"/>
+    <!--自定义属性-->
+    <property name="workspacedir" value="${env.WORKSPACE}"/>
 
+
+    <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure"/>
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/coverage"/>
