@@ -2,12 +2,13 @@
 <project name="pexample" default="full-build">
 
 
-    <target name="full-build" depends="prepare,phpmd,phpcpd,phpunit,phpcs"/>
+    <target name="full-build" depends="prepare,phpmd,phpcpd,phpdox,phpcs,phpunit"/>
 
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
         <delete dir="${project.basedir}/build/coverage"/>
         <delete dir="${project.basedir}/build/logs"/>
+        <delete dir="${project.basedir}/build/phpdox"/>
         <delete dir="/var/lib/jenkins/workspace/Demo-b/pmd.xml"/>
         <delete dir="/var/lib/jenkins/workspace/Demo-b/cpd.xml"/>
         <delete dir="/var/lib/jenkins/workspace/Demo-b/checkstyle-result.xml"/>
@@ -19,6 +20,7 @@
     <target name="prepare" unless="prepare.done" depends="clean" description="Prepare for build">
         <mkdir dir="${project.basedir}/build/coverage"/>
         <mkdir dir="${project.basedir}/build/logs"/>
+        <mkdir dir="${project.basedir}/build/phpdox"/>
         <property name="prepare.done" value="true"/>
     </target>
 
@@ -65,7 +67,9 @@
     </target>
 
 
-
+    <target name="phpdox">
+        <exec executable="/usr/local/bin/phpdox" dir="${project.basedir}/build"/>
+    </target>
 
 
 
