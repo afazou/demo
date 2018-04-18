@@ -13,9 +13,9 @@
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/coverage"/>
         <delete dir="${basedir}/build/logs"/>
-        <delete dir="${workspacedir}/pmd.xml"/>
-        <delete dir="${workspacedir}/cpd.xml"/>
-        <delete dir="${workspacedir}/checkstyle-result.xml"/>
+        <delete dir="/var/lib/jenkins/workspace/Demo-b/pmd.xml"/>
+        <delete dir="/var/lib/jenkins/workspace/Demo-b/cpd.xml"/>
+        <delete dir="/var/lib/jenkins/workspace/Demo-b/checkstyle-result.xml"/>
         <property name="clean.done" value="true"/>
     </target>
 
