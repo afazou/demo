@@ -4,18 +4,15 @@
     <!--使用Jenkins的内置变量-->
     <property environment="env"/>
 
-    <!--自定义属性-->
-    <property name="workspacedir" value="${env.WORKSPACE}"/>
-
     <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure"/>
 
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/coverage"/>
         <delete dir="${basedir}/build/logs"/>
-        <delete dir="${workspacedir}/${env.JOB_NAME}/pmd.xml"/>
-        <delete dir="${workspacedir}/${env.JOB_NAME}/cpd.xml"/>
-        <delete dir="${workspacedir}/${env.JOB_NAME}/checkstyle-result.xml"/>
+        <delete dir="${workspacedir}/Demo-b/pmd.xml"/>
+        <delete dir="${workspacedir}/Demo-b/cpd.xml"/>
+        <delete dir="${workspacedir}/Demo-b/checkstyle-result.xml"/>
         <property name="clean.done" value="true"/>
     </target>
 
@@ -51,7 +48,7 @@
     <target name="phpcpd">
         <exec dir="${basedir}" executable="/usr/local/bin/phpcpd">
             <arg value="--log-pmd" />
-            <arg path="${workspacedir}/${env.JOB_NAME}/cpd.xml" />
+            <arg path="${workspacedir}/Demo-b/cpd.xml" />
             <arg path="kefu-client/src" />
         </exec>
     </target>
@@ -60,7 +57,7 @@
     <target name="phpcs">
         <exec dir="${basedir}" executable="/usr/local/bin/phpcs">
             <arg value="--report=checkstyle" />
-            <arg value="--report-file=${workspacedir}/${env.JOB_NAME}/checkstyle-result.xml" />
+            <arg value="--report-file=${workspacedir}/Demo-b/checkstyle-result.xml" />
             <arg value="--standard=PSR2" />
             <arg value="--extensions=php" />
             <arg value="--ignore=autoload.php" />
