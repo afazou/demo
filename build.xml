@@ -13,6 +13,8 @@
     <echo>BUILD_NUMBER:${env.BUILD_NUMBER}</echo>
     <echo>BUILD_ID:${env.BUILD_ID}</echo>
     <echo>BUILD_DISPLAY_NAME:${env.BUILD_DISPLAY_NAME}</echo>
+    <echo>NODE_NAME:${env.NODE_NAME}</echo>
+    <echo>NODE_LABELS:${env.NODE_LABELS}</echo>
 
     <!--自定义属性-->
     <property name="tarfile" value="${env.JOB_NAME}.${env.BUILD_NUMBER}.${env.BUILD_ID}.tar.gz" />
