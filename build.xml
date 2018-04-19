@@ -113,10 +113,11 @@
 
     <!--布署-->
     <target name="release" description="Release package" >
+        <available property="isExist" file="${distfile}" type="file" />
         <if>
-            <available file="${distfile}" type="file" />
+            <equals arg1="${isExist}" arg2="true" />
             <then>
-                <copy todir="/opt/release" file="${distfile}" />
+                <copy overwrite="true" todir="/opt/release" file="${distfile}" />
             </then>
         </if>
     </target>
