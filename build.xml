@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="pexample" default="packing-init">
+<project name="pexample" default="full-build">
 
     <!--使用Jenkins的内置变量-->
     <property environment="env"/>
@@ -20,17 +20,6 @@
     <property name="tarfile" value="${env.JOB_NAME}.${env.BUILD_NUMBER}.${env.BUILD_ID}.tar.gz" />
     <property name="distfile" value="dist/${tarfile}" />
 
-    <target name="packing-init">
-        <if>
-            <equals arg1="${env.NODE_NAME}" arg2="192.168.56.3"/>
-            <then>
-                <echo >NODE_NAME：${env.NODE_NAME}</echo>
-            </then>
-            <else>
-                <antcall target="full-build"/>
-            </else>
-        </if>
-    </target>
 
     <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure,release"/>
 
