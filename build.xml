@@ -18,7 +18,7 @@
     <property name="tarfile" value="${env.JOB_NAME}.${env.BUILD_NUMBER}.${env.BUILD_ID}.tar.gz" />
     <property name="distfile" value="dist/${tarfile}" />
 
-    <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,check,tar,-check-failure"/>
+    <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,check,tar,-check-failure,release"/>
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/coverage"/>
@@ -111,6 +111,15 @@
         <mkdir dir="dist" />
     </target>
 
+    <!--布署-->
+    <target name="release" description="Release package" >
+        <if>
+            <available file="${distfile}" type="file" />
+            <then>
+                <copy todir="/opt/release" file="${distfile}" />
+            </then>
+        </if>
+    </target>
 
 </project>
 
