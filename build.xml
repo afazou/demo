@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="pexample" default="full-build">
+<project name="pexample" default="clean">
 
     <!--使用Jenkins的内置变量-->
     <property environment="env"/>
@@ -7,93 +7,24 @@
     <!--自定义属性-->
     <property name="workspacedir" value="${env.WORKSPACE}"/>
 
+    <target name="clean">
 
-    <!--输出信息-->
-    <echo message="WORKSPACE:${workspacedir}" file="/tmp/messge.log" append="true"/>
-    <echo message="JOB_NAME:${env.JOB_NAME}" file="/tmp/messge.log" append="true"/>
-    <echo message="JOB_BASE_NAME:${env.JOB_BASE_NAME}" file="/tmp/messge.log" append="true"/>
-    <!--输出到控制台-->
-    <echo>Main Target init...............................................................</echo>
-    <echo>basedir:${basedir}</echo>
-    <echo>WORKSPACE:${env.WORKSPACE}</echo>
-    <echo>JOB_NAME:${env.JOB_NAME}</echo>
-    <echo>JOB_BASE_NAME:${env.JOB_BASE_NAME}</echo>
-    <echo>BUILD_NUMBER:${env.BUILD_NUMBER}</echo>
-    <echo>BUILD_ID:${env.BUILD_ID}</echo>
-    <echo>BUILD_DISPLAY_NAME:${env.BUILD_DISPLAY_NAME}</echo>
+        <!--输出信息-->
+        <echo message="WORKSPACE:${workspacedir}" file="/tmp/messge.log" append="true"/>
+        <echo message="JOB_NAME:${env.JOB_NAME}" file="/tmp/messge.log" append="true"/>
+        <echo message="JOB_BASE_NAME:${env.JOB_BASE_NAME}" file="/tmp/messge.log" append="true"/>
+        <!--输出到控制台-->
+        <echo>Main Target init...............................................................</echo>
+        <echo>basedir:${basedir}</echo>
+        <echo>WORKSPACE:${env.WORKSPACE}</echo>
+        <echo>JOB_NAME:${env.JOB_NAME}</echo>
+        <echo>JOB_BASE_NAME:${env.JOB_BASE_NAME}</echo>
+        <echo>BUILD_NUMBER:${env.BUILD_NUMBER}</echo>
+        <echo>BUILD_ID:${env.BUILD_ID}</echo>
+        <echo>BUILD_DISPLAY_NAME:${env.BUILD_DISPLAY_NAME}</echo>
 
-
-    <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure"/>
-
-    <target name="clean" unless="clean.done" description="Cleanup build artifacts">
-        <delete dir="${basedir}/build/coverage"/>
-        <delete dir="${basedir}/build/logs"/>
-        <delete file="${workspacedir}/pmd.xml"/>
-        <delete file="${workspacedir}/cpd.xml"/>
-        <delete file="${workspacedir}/checkstyle-result.xml"/>
-        <property name="clean.done" value="true"/>
     </target>
 
-
-
-    <target name="prepare" unless="prepare.done" depends="clean" description="Prepare for build">
-        <mkdir dir="${basedir}/build/coverage"/>
-        <mkdir dir="${basedir}/build/logs"/>
-        <property name="prepare.done" value="true"/>
-    </target>
-
-
-    <target name="phpmd">
-        <exec dir="${basedir}" executable="/usr/local/bin/phpmd">
-            <arg path="kefu-client/src" />
-            <arg value="xml" />
-            <arg path="phpmd.xml" />
-            <arg value="--reportfile" />
-            <arg path="${workspacedir}/pmd.xml" />
-        </exec>
-    </target>
-
-
-    <!--failonerror：当出现错误时自动停止-->
-    <target name="phpunit" description="Run unit tests with PHPUnit">
-        <exec dir="${basedir}" executable="/usr/local/bin/phpunit" resultproperty="result.phpunit" failonerror="true">
-            <arg value="--configuration"/>
-            <arg path="kefu-client/phpunit-db.xml"/>
-        </exec>
-    </target>
-
-
-    <target name="phpcpd">
-        <exec dir="${basedir}" executable="/usr/local/bin/phpcpd">
-            <arg value="--log-pmd" />
-            <arg path="${workspacedir}/cpd.xml" />
-            <arg path="kefu-client/src" />
-        </exec>
-    </target>
-
-
-    <target name="phpcs">
-        <exec dir="${basedir}" executable="/usr/local/bin/phpcs">
-            <arg value="--report=checkstyle" />
-            <arg value="--report-file=${workspacedir}/checkstyle-result.xml" />
-            <arg value="--standard=PSR2" />
-            <arg value="--extensions=php" />
-            <arg value="--ignore=autoload.php" />
-            <arg path="kefu-client/src" />
-            <arg path="kefu-client/tests" />
-        </exec>
-    </target>
-
-
-    <target name="-check-failure">
-        <fail message="PHPUnit did not finish successfully">
-            <condition>
-                <not>
-                    <equals arg1="${result.phpunit}" arg2="0"/>
-                </not>
-            </condition>
-        </fail>
-    </target>
 
 </project>
 
