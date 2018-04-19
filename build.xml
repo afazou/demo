@@ -14,8 +14,11 @@
     <echo>BUILD_ID:${env.BUILD_ID}</echo>
     <echo>BUILD_DISPLAY_NAME:${env.BUILD_DISPLAY_NAME}</echo>
 
+    <!--自定义属性-->
+    <property name="tarfile" value="${env.JOB_NAME}.${env.BUILD_NUMBER}.${env.BUILD_ID}.tar.gz" />
+    <property name="distfile" value="dist/${tarfile}" />
 
-    <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure"/>
+    <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure,check,tar"/>
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/coverage"/>
@@ -86,6 +89,28 @@
             </condition>
         </fail>
     </target>
+
+
+    <fileset id="package.tar.gz" dir=".">
+        <exclude name="build/**"/>
+        <exclude name="dist/**"/>
+        <exclude name="build.xml"/>
+        <exclude name="README.md"/>
+    </fileset>
+
+    <target name="tar" depends="check" description="Create tar file for release">
+        <echo msg="Creating distribution tar for ${tarfile}"/>
+        <delete file="${distfile}" failonerror="false"/>
+        <tar destfile="${distfile}" compression="gzip">
+            <fileset refid="package.tar.gz"/>
+        </tar>
+    </target>
+
+    <target name="check" description="Check variables" >
+        <delete dir="dist" failonerror="false" />
+        <mkdir dir="dist" />
+    </target>
+
 
 </project>
 
