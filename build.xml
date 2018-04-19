@@ -18,7 +18,7 @@
     <property name="tarfile" value="${env.JOB_NAME}.${env.BUILD_NUMBER}.${env.BUILD_ID}.tar.gz" />
     <property name="distfile" value="dist/${tarfile}" />
 
-    <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,check,tar,-check-failure,release"/>
+    <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure,release"/>
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/coverage"/>
@@ -104,6 +104,7 @@
         <tar destfile="${distfile}" compression="gzip">
             <fileset refid="package.tar.gz"/>
         </tar>
+        <available property="isExist" file="${distfile}" type="file" />
     </target>
 
     <target name="check" description="Check variables" >
@@ -112,14 +113,8 @@
     </target>
 
     <!--布署-->
-    <target name="release" description="Release package" >
-        <available property="isExist" file="${distfile}" type="file" />
-        <condition property="p_name" value="concat" else="concat_a">
-            <equals arg1="${isExist}" arg2="true" />
-        </condition>
-        <concat>
-            <copy overwrite="true" todir="/opt/release" file="${distfile}" />
-        </concat>
+    <target if="isExist" name="release" description="Release package" depends="tar" >
+        <copy overwrite="true" todir="/opt/release" file="${distfile}" />
     </target>
 
 </project>
