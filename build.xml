@@ -49,6 +49,7 @@
             <arg value="--reportfile" />
             <arg path="${basedir}/build/pmd.xml" />
             <arg value="--suffixes .php" />
+            <arg value="--exclude kefu-client/vendor" />
         </exec>
     </target>
 
