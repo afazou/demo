@@ -43,15 +43,13 @@
 
     <target name="phpmd">
         <exec dir="${basedir}" executable="/usr/local/bin/phpmd">
-            <arg path="${basedir}" />
+            <arg path="kefu-common" />
             <arg value="xml" />
             <arg path="kefu-client/phpmd.xml" />
             <arg value="--reportfile" />
             <arg path="${basedir}/build/pmd.xml" />
             <arg value="--suffixes" />
             <arg value=".php" />
-            <arg value="--exclude" />
-            <arg value="kefu-client/vendor" />
         </exec>
     </target>
 
