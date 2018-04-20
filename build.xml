@@ -41,7 +41,7 @@
         <exec dir="${basedir}" executable="/usr/local/bin/phpmd" resultproperty="result.phpmd">
             <arg path="kefu-common,kefu-client" />
             <arg value="xml" />
-            <arg path="kefu-client/phpmd.xml" />
+            <arg path="unusedcode" />
             <arg value="--reportfile" />
             <arg path="${basedir}/build/pmd.xml" />
             <arg line="--suffixes php --exclude vendor,dist,build"></arg>
