@@ -42,7 +42,7 @@
 
 
     <target name="phpmd">
-        <exec dir="${basedir}" executable="/usr/local/bin/phpmd">
+        <exec dir="${basedir}" executable="/usr/local/bin/phpmd" resultproperty="result.phpmd">
             <arg path="kefu-common|kefu-client" />
             <arg value="xml" />
             <arg path="kefu-client/phpmd.xml" />
@@ -91,6 +91,11 @@
                 <not>
                     <equals arg1="${result.phpunit}" arg2="0"/>
                 </not>
+            </condition>
+        </fail>
+        <fail message="PHPMD did not finish successfully">
+            <condition>
+                <equals arg1="${result.phpmd}" arg2="1"/>
             </condition>
         </fail>
     </target>
