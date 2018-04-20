@@ -24,7 +24,7 @@
     <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure,release"/>
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
-        <delete dir="${basedir}/build"/>
+        <delete failonerror="true" dir="${basedir}/build"/>
         <property name="clean.done" value="true"/>
     </target>
 
@@ -45,14 +45,14 @@
             <arg value="--reportfile" />
             <arg path="${basedir}/build/pmd.xml" />
             <arg value="--suffixes php" />
-            <arg value="--exclude kefu-client/vendor" />
+            <arg value="--exclude /var/lib/jenkins/workspace/Demo-b-a002/kefu-client/vendor" />
         </exec>
     </target>
 
 
     <!--failonerror：当出现错误时自动停止-->
     <target name="phpunit" description="Run unit tests with PHPUnit">
-        <exec dir="${basedir}" executable="/usr/local/bin/phpunit" resultproperty="result.phpunit" failonerror="true">
+        <exec dir="${basedir}" executable="/usr/local/bin/phpunit" resultproperty="result.phpunit">
             <arg value="--configuration"/>
             <arg path="kefu-client/phpunit-db.xml"/>
         </exec>
