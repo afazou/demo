@@ -43,7 +43,7 @@
 
     <target name="phpmd">
         <exec dir="${basedir}" executable="/usr/local/bin/phpmd">
-            <arg path="kefu-common" />
+            <arg path="kefu-common|kefu-client" />
             <arg value="xml" />
             <arg path="kefu-client/phpmd.xml" />
             <arg value="--reportfile" />
