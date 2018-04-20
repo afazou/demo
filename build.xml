@@ -44,8 +44,7 @@
             <arg path="kefu-client/phpmd.xml" />
             <arg value="--reportfile" />
             <arg path="${basedir}/build/pmd.xml" />
-            <arg value="--suffixes php" />
-            <arg value="--exclude /var/lib/jenkins/workspace/Demo-b-a002/kefu-client/vendor" />
+            <arg line="--suffixes php --exclude vendor,dist,build"></arg>
         </exec>
     </target>
 
