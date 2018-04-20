@@ -48,8 +48,6 @@
             <arg path="kefu-client/phpmd.xml" />
             <arg value="--reportfile" />
             <arg path="${basedir}/build/pmd.xml" />
-            <arg value="--suffixes" />
-            <arg value=".php" />
         </exec>
     </target>
 
