@@ -40,7 +40,7 @@
     <target name="phpmd">
         <exec dir="${basedir}" executable="/usr/local/bin/phpmd" resultproperty="result.phpmd">
             <arg path="kefu-common,kefu-client" />
-            <arg line="xml unusedcode,cleancode/ElseExpression,codesize,design,naming"></arg>
+            <arg line="xml unusedcode,cleancode.xml/ElseExpression,codesize,design,naming"></arg>
             <arg value="--reportfile" />
             <arg path="${basedir}/build/pmd.xml" />
             <arg line="--suffixes php --exclude vendor,dist,build"></arg>
