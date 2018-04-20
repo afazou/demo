@@ -64,7 +64,7 @@
 
 
     <target name="phpcpd">
-        <exec dir="${basedir}" executable="/usr/local/bin/phpcpd">
+        <exec dir="${basedir}" executable="/usr/local/bin/phpcpd" resultproperty="result.phpcpd">
             <arg value="--log-pmd" />
             <arg path="${basedir}/build/cpd.xml" />
             <arg path="kefu-client/src" />
@@ -73,7 +73,7 @@
 
 
     <target name="phpcs">
-        <exec dir="${basedir}" executable="/usr/local/bin/phpcs">
+        <exec dir="${basedir}" executable="/usr/local/bin/phpcs" resultproperty="result.phpcs">
             <arg value="--report=checkstyle" />
             <arg value="--report-file=${basedir}/build/checkstyle-result.xml" />
             <arg value="--standard=PSR2" />
@@ -86,6 +86,10 @@
 
 
     <target name="-check-failure">
+        <echo>phpmd:${result.phpmd}</echo>
+        <echo>phpunit:${result.phpunit}</echo>
+        <echo>phpmd:${result.phpcpd}</echo>
+        <echo>phpmd:${result.phpcs}</echo>
         <fail message="PHPUnit did not finish successfully">
             <condition>
                 <not>
