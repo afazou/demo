@@ -24,11 +24,7 @@
     <target name="full-build" depends="prepare,phpmd,phpcpd,phpcs,phpunit,-check-failure,release"/>
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
-        <delete dir="${basedir}/build/coverage"/>
-        <delete dir="${basedir}/build/logs"/>
-        <delete file="${basedir}/build/pmd.xml"/>
-        <delete file="${basedir}/build/cpd.xml"/>
-        <delete file="${basedir}/build/checkstyle-result.xml"/>
+        <delete dir="${basedir}/build"/>
         <property name="clean.done" value="true"/>
     </target>
 
@@ -49,7 +45,8 @@
             <arg value="--reportfile" />
             <arg path="${basedir}/build/pmd.xml" />
             <arg value="--suffixes php" />
-            <arg value="--exclude vendor,dist,build" />
+            <arg value="--exclude" />
+            <arg path="vendor,dist,build" />
         </exec>
     </target>
 
